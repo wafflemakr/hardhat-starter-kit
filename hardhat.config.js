@@ -6,6 +6,7 @@ require("dotenv").config();
 require("@nomiclabs/hardhat-truffle5");
 require("@nomiclabs/hardhat-etherscan");
 require("@nomiclabs/hardhat-web3");
+require("hardhat-deploy");
 
 module.exports = {
   networks: {
@@ -23,6 +24,13 @@ module.exports = {
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API,
+  },
+  namedAccounts: {
+    deployer: 0,
+    // admin: {
+    //   default: 1,
+    //   mainnet: "0x2cf7252e74036d1da831d11089d326296e64a728",
+    // },
   },
   solidity: {
     version: "0.8.4",
