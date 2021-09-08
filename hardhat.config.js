@@ -6,6 +6,7 @@ require("dotenv").config();
 require("@nomiclabs/hardhat-truffle5");
 require("@nomiclabs/hardhat-etherscan");
 require("@nomiclabs/hardhat-web3");
+require("@nomiclabs/hardhat-ethers");
 require("hardhat-deploy");
 
 module.exports = {
@@ -17,6 +18,10 @@ module.exports = {
         blockNumber: 11589707,
       },
     },
+    rinkeby: {
+      url: `https://eth-rinkeby.alchemyapi.io/v2/${process.env.RINKEBY_ALCHEMY_KEY}`,
+      accounts: [process.env.RINKEBY_PRIVATE_KEY],
+    },
     live: {
       url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
       accounts: [process.env.MAINNET_PRIVKEY],
@@ -27,10 +32,8 @@ module.exports = {
   },
   namedAccounts: {
     deployer: 0,
-    // admin: {
-    //   default: 1,
-    //   mainnet: "0x2cf7252e74036d1da831d11089d326296e64a728",
-    // },
+    feeRecipient: 1,
+    user: 2,
   },
   solidity: {
     version: "0.8.4",
